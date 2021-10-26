@@ -44,11 +44,11 @@ module.exports.displayAddPage = (req, res, next) => {
 // Processes the data submitted from the Add form to create a new book
 module.exports.processAddPage = (req, res, next) => {
   let newBook = Book({
-    name: req.body.name,
-    author: req.body.author,
-    published: req.body.published,
-    description: req.body.description,
-    price: req.body.price,
+    Title: req.body.Title,
+    Description: req.body.Description,
+    Price: req.body.Price,
+    Author: req.body.Author,
+    Genre: req.body.Genre,
   });
 
   Book.create(newBook, (err, Book) => {
@@ -72,6 +72,7 @@ module.exports.displayEditPage = (req, res, next) => {
       res.end(err);
     } else {
       //show the edit view
+      console.log("editor");
       res.render("book/add_edit", {
         title: "Edit Book",
         book: bookToEdit,
@@ -81,16 +82,16 @@ module.exports.displayEditPage = (req, res, next) => {
 };
 
 // Processes the data submitted from the Edit form to update a book
-module.exports.processEditPage = (req, res, next) => {
+module.exports.processEditPage = async (req, res, next) => {
   let id = req.params.id;
-
-  let updatedBook = Book({
+  console.log(req.body);
+  let updatedBook = new Book({
     _id: id,
-    Title: req.body.title,
-    Description: req.body.description,
-    Price: req.body.price,
-    Author: req.body.author,
-    Genre: req.body.genre,
+    Title: req.body.Title,
+    Description: req.body.Description,
+    Price: req.body.Price,
+    Author: req.body.Author,
+    Genre: req.body.Genre,
   });
 
   Book.updateOne({ _id: id }, updatedBook, (err) => {
@@ -98,7 +99,8 @@ module.exports.processEditPage = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-      // refresh the book list
+      console.log("book is updated");
+      console.log(updatedBook.Title);
       res.redirect("/book/list");
     }
   });

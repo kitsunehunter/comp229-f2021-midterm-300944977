@@ -8,7 +8,7 @@
 
       <form class="form" method="POST">
         <div class="form-group">
-          <input type="hidden" name="id" value="<%= book._id %>" />
+          <input type="hidden" name="id" />
           <label for="bookTextField">Title</label>
           <input
             type="text"
@@ -16,7 +16,6 @@
             id="bookTextField"
             placeholder="Enter the Title"
             name="Title"
-            value="<%= book.Title %>"
             required
           />
         </div>
@@ -29,7 +28,6 @@
             id="bookTextField"
             placeholder="Enter the Description"
             name="Description"
-            value="<%= book.Description %>"
             required
           />
         </div>
@@ -42,7 +40,6 @@
             id="statusTextField"
             placeholder="00"
             name="Price"
-            value="<%= book.Price %>"
           />
         </div>
         <br />
@@ -54,7 +51,6 @@
             id="bookTextField"
             placeholder="Enter the Author"
             name="Author"
-            value="<%= book.Author %>"
             required
           />
         </div>
@@ -67,7 +63,6 @@
             id="bookTextField"
             placeholder="Enter the Genre"
             name="Genre"
-            value="<%= book.Genre %>"
             required
           />
         </div>
