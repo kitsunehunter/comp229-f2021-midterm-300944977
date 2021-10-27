@@ -1,3 +1,8 @@
+/*
+book.js
+xavier zhang
+300944977
+*/
 // create a reference to the model
 let Book = require("../models/book");
 
